@@ -1,0 +1,17 @@
+{
+  "name": "norland_assignment_8_internet_programming",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "devStart" : "nodemon server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "express": "^5.3.0",
+    "nodemon": "^3.1.14"
+  }
+}
