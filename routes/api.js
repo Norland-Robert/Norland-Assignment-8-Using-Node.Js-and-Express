@@ -54,7 +54,7 @@ router.put('/:id', (req, res) => {
     const targetID = req.params.id
 
     //Checks to see if it exists
-    const index = resources.findIndex(item => item.id === targetId)
+    const index = resources.findIndex(item => item.id === targetID)
 
     //Conditional check for if index is not found
     if (index === -1) {
