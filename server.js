@@ -16,14 +16,12 @@ app.get('/', (req, res) => {
 })
 
 
-//Route Creation
-app.get('/users', (req,res) =>{
+const userRouter = require("./routes/users")
 
-})
+//const apiRouter = require('./routes.api')
 
-app.get('/users/new', (req,res) => {
-    
-})
+//calls the router for use
+app.use("./users", userRouter)
 
 app.listen(3000)
 
