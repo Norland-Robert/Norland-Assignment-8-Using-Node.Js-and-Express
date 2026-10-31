@@ -42,7 +42,7 @@ router.post('/', (req, res) => {
     }
 
     //Adds the new item to the array if its correct
-    const newItem = { id: Date.new().toString(), title: title.trim() }
+    const newItem = { id: Date.now().toString(), title: title.trim() }
     resources.push(newItem)
     res.status(201).json({ data: newItem})
 })
