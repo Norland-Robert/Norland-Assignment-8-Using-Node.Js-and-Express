@@ -50,10 +50,33 @@ router.post('/', (req, res) => {
 // PUT Request to update an existing resourse using its id
 router.put('/:id', (req, res) => {
 
+    //sets the target id
+    const targetID = req.params.id
+
+    //Checks to see if it exists
+    const index = resources.findIndex(item => item.id === targetId)
+
+    //Conditional check for if index is -1
+    if (index === -1) {
+        return res.status(404).json({ error: "Requested resource not found"})
+    }
+
+    //Adds value to the array
+    resources[index] = {
+        ...resources[index],
+        ...req.body,
+        id: targetID
+    }
+
+    //Returns a 201 status to let the user know the requested resource has been successfully created
+    res.status(201).json({data: resources[index]}, " Successfully added to memory array")
+
 })
 
 // DELETE Request to delete a resourse using its id
 router.delete('/:id', (req, res) => {
+
+
 
 })
 
