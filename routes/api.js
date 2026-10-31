@@ -1,10 +1,13 @@
 const express = require("express")
 const router = express.Router()
 
-app.get('/api', (res,req) => {
+router.get('/', (res,req) => {
 
 })
 
-app.get('/api/resources', (res,req) => {
-    
+router.get('/resources', (res,req) => {
+
 })
+
+//Exports router file for use in the server file
+//module.exports = router
