@@ -56,7 +56,7 @@ router.put('/:id', (req, res) => {
     //Checks to see if it exists
     const index = resources.findIndex(item => item.id === targetId)
 
-    //Conditional check for if index is -1
+    //Conditional check for if index is not found
     if (index === -1) {
         return res.status(404).json({ error: "Requested resource not found"})
     }
@@ -76,7 +76,22 @@ router.put('/:id', (req, res) => {
 // DELETE Request to delete a resourse using its id
 router.delete('/:id', (req, res) => {
 
+    //Creates target id to store requested id
+    const targetID = req.params.id
 
+    //Checks to see if the value exists
+    const index = resources.findIndex(item => item.id === targetID)
+
+    //Conditional check if not found
+    if (index === -1){
+        return res.status(404).json({ error: "Requested resource not found"})
+    }
+
+    //Deletes item from the array
+    const deletedItem = resources.splice(index, 1)
+
+    //Return Status to inform the user the resource has been successfully removed from the array
+    res.status(200).json({message: "Resource successfully deleted", data: deletedItem[0]})
 
 })
 
