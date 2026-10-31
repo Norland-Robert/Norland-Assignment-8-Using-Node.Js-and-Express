@@ -1,11 +1,16 @@
 const express = require("express")
 const router = express.Router()
 
-router.get('/', (res,req) => {
+//Creates a memory array to store data
+let resources = []
 
+//A GET request to get data from the memory array
+router.get('/', (req, res) => {
+    res.status(200).json({data: resources})
 })
 
-router.get('/resources', (res,req) => {
+
+router.get('/resources', (req,res) => {
 
 })
 

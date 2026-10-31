@@ -13,7 +13,7 @@ app.use(express.json())
 //The custom logging middleware
 app.use((req, res, next) => {
     console.log(`[${new Date().toISOString()}] ${req.method} request targeting path: ${req.path}`);
-  next(); // Hands off execution context to the next handler in line
+    next()
 })
 
 
@@ -21,8 +21,8 @@ app.use((req, res, next) => {
 app.use(express.static("public"))
 
 
-
-const apiRouter = require('./routes.api')
+//Allows for API router and routes
+const apiRouter = require('./routes/api')
 
 
 //calls the router for use
