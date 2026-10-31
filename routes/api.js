@@ -27,12 +27,24 @@ router.get('/:id', (req, res) => {
 
     //Returns an OK response otherwise
     res.status(200).json({data: match})
-    
+
 })
 
 // POST Request to create a new resource to be added to the array
 router.post('/', (req, res) => {
 
+    //Declares the name of the new resource being added
+    const { title } = req.body
+    
+    //Checks to see if the input was empty
+    if (!title || title.trim() === ""){
+        return res.status(400).json({ error: "Validation Error: Object attribute 'title' is either missin or blank."})
+    }
+
+    //Adds the new item to the array if its correct
+    const newItem = { id: Date.new().toString(), title: title.trim() }
+    resources.push(newItem)
+    res.status(201).json({ data: newItem})
 })
 
 // PUT Request to update an existing resourse using its id
