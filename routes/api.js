@@ -10,4 +10,4 @@ router.get('/resources', (res,req) => {
 })
 
 //Exports router file for use in the server file
-//module.exports = router
+module.exports = router

@@ -7,21 +7,30 @@ const app = express()
 //Sets application to utilize view engine
 app.set('view engine', 'ejs')
 
-//Requests
-app.get('/', (req, res) => {
-    console.log('Here')
+//Allows for the parsing of JSON data
+app.use(express.json())
 
-    //Renders index file to be displayed on web/server page
-    res.render("index", {text: "World"})
+//The custom logging middleware
+app.use((req, res, next) => {
+    console.log(`[${new Date().toISOString()}] ${req.method} request targeting path: ${req.path}`);
+  next(); // Hands off execution context to the next handler in line
 })
 
 
-const userRouter = require("./routes/users")
+//Static Display for home page
+app.use(express.static("public"))
 
-//const apiRouter = require('./routes.api')
+
+
+const apiRouter = require('./routes.api')
+
 
 //calls the router for use
-app.use("./users", userRouter)
+app.use('/api', apiRouter)
 
-app.listen(3000)
+//Assigns the port for the server to start on and prints to the console to let users know it 
+//launched successfully
+app.listen(3000, () => {
+    console.log("Server Successfully Started on Port 3000")
+})
 
